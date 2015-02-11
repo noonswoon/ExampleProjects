@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "BusServices", "BusServices\BusServices.ccproj", "{5C0E1380-EAAF-4CC8-BFD0-25ED4B0673DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAPI", "LogAPI\LogAPI.csproj", "{A2C69D84-180B-4785-A317-DB3F974879DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogQueueService", "LogQueueService\LogQueueService.csproj", "{81C921C7-A7B5-4311-BD0A-6277211B2F44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C0E1380-EAAF-4CC8-BFD0-25ED4B0673DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C0E1380-EAAF-4CC8-BFD0-25ED4B0673DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C0E1380-EAAF-4CC8-BFD0-25ED4B0673DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C0E1380-EAAF-4CC8-BFD0-25ED4B0673DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2C69D84-180B-4785-A317-DB3F974879DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2C69D84-180B-4785-A317-DB3F974879DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2C69D84-180B-4785-A317-DB3F974879DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2C69D84-180B-4785-A317-DB3F974879DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81C921C7-A7B5-4311-BD0A-6277211B2F44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81C921C7-A7B5-4311-BD0A-6277211B2F44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81C921C7-A7B5-4311-BD0A-6277211B2F44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81C921C7-A7B5-4311-BD0A-6277211B2F44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
