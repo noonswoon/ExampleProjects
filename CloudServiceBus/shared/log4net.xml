@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<log4net>
+  <!--must be unique name-->
+  <!--more http://logging.apache.org/log4net/release/sdk/log4net.Appender.ColoredConsoleAppender.html-->
+
+  <appender name="QueueAppender" type="LogAPI.Helpers.QueueAppender, LogAPI">
+    <layout type="log4net.Layout.SimpleLayout"/>
+
+    <filter type="log4net.Filter.LoggerMatchFilter">
+      <!-- ...but not the rest of it -->
+      <loggerToMatch value="LogServiceBus.WorkerRole" />
+      <acceptOnMatch value="false" />
+    </filter>
+    
+  </appender>
+
+
+  <appender name="FileAppender" type="log4net.Appender.FileAppender">
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date %thread [%-5level] %-10.30logger %.50message%newline%exception" />
+    </layout>
+
+    <file value="c:\cloud.log.txt"/>
+    <!--current directory of process -->
+    <appendToFile value="true"/>
+    <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+  </appender>
+  <!--default for all logger-->
+  <root>
+    <level value="DEBUG"/>
+    <appender-ref ref="FileAppender"/>
+    <appender-ref ref="QueueAppender"/>
+  </root>
+
+  <logger name="LogServiceBus.WorkerRole">
+    <level value="DEBUG"/>
+  </logger> 
+  
+</log4net>

@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogServiceBus", "LogService
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogModels", "LogModels\LogModels.csproj", "{492885BC-2A69-4BEE-9A4F-40B08761ED59}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{3B710F94-FE91-47B7-BCFA-EC665CFE620B}"
+	ProjectSection(SolutionItems) = preProject
+		shared\log4net.xml = shared\log4net.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

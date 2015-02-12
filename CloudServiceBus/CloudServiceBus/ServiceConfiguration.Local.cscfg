@@ -3,14 +3,16 @@
   <Role name="LogAPI">
     <Instances count="1" />
     <ConfigurationSettings>
+      <Setting name="ServiceBus.ConnectionString" value="Endpoint=sb://nsmqdev2.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=ckS5/z0Cx9gucxoi/0/6WLYKc3DLh8kMz+jGTMhY/74=" />
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
     </ConfigurationSettings>
   </Role>
+  
   <Role name="LogServiceBus">
     <Instances count="1" />
     <ConfigurationSettings>
+      <Setting name="ServiceBus.ConnectionString" value="Endpoint=sb://nsmqdev2.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=ckS5/z0Cx9gucxoi/0/6WLYKc3DLh8kMz+jGTMhY/74=" />
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
-      <Setting name="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://[your namespace].servicebus.windows.net;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[your key]" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>

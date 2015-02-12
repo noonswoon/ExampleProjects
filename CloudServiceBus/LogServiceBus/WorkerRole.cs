@@ -1,40 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Threading;
 using LogModels.Dto;
-using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.ServiceRuntime;
-
+using log4net;
 namespace LogServiceBus
 {
     public class WorkerRole : RoleEntryPoint
     {
-        string _conn = CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
-        const string _queue = "LogQueue";
+        const string QUEUE_NAME = "LogQueue";
+
+        private readonly ILog _log = LogManager.GetLogger(typeof(WorkerRole));
+
+        private string _connectionString;
         private QueueClient _client;
+        public override bool OnStart()
+        {
+            _log.Debug("application started");
+            _connectionString = CloudConfigurationManager.GetSetting("ServiceBus.ConnectionString");
+            _log.DebugFormat("_connectionString [{0}]", _connectionString);
+
+            return base.OnStart();
+        }
 
         public override void Run()
         {
+            _log.Debug("Run called");
+
             try
             {
-                var client = QueueClient.CreateFromConnectionString(_conn, _queue, ReceiveMode.ReceiveAndDelete);
+                 _client = QueueClient.CreateFromConnectionString(_connectionString, QUEUE_NAME, ReceiveMode.ReceiveAndDelete);
 
-                if (client != null)
+                if (_client != null)
                 {
                     while (true)
                     {
-                        var messages = client.Receive();
+                        var messages = _client.Receive();
                         if (messages != null)
                         {
                             var log = messages.GetBody<LogDto>();
-
                             //Trace.WriteLine(log.ToString());
-                            Trace.WriteLine("Message Id :- " + messages.MessageId + ", log time :- " + log.LogTime + ", log level :-" + log.LogLevel + ", log detail :- " + log.LogDetail);
+                            _log.Debug(log);
                         }
                     }
                 }
@@ -45,11 +52,6 @@ namespace LogServiceBus
             }
         }
 
-        public override bool OnStart()
-        {
-            _client = QueueClient.CreateFromConnectionString(_conn, _queue, ReceiveMode.ReceiveAndDelete);
-            return base.OnStart();
-        }
 
         public override void OnStop()
         {

@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceDefinition name="CloudServiceBus" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2014-06.2.4">
   <WebRole name="LogAPI" vmsize="Small">
+    <!--needed to put configuration first-->
+    <!--both web role and worker role-->
+    <ConfigurationSettings>
+      <Setting name="ServiceBus.ConnectionString"/>
+    </ConfigurationSettings>
+
     <Sites>
       <Site name="Web">
         <Bindings>
@@ -11,16 +17,25 @@
     <Endpoints>
       <InputEndpoint name="Endpoint1" protocol="http" port="80" />
     </Endpoints>
+
     <Imports>
       <Import moduleName="Diagnostics" />
     </Imports>
+
   </WebRole>
+
   <WorkerRole name="LogServiceBus" vmsize="Small">
+
+  <!--both web role and worker role-->
+    <ConfigurationSettings>
+      <Setting name="ServiceBus.ConnectionString"/>
+    </ConfigurationSettings>
+
     <Imports>
       <Import moduleName="Diagnostics" />
     </Imports>
-    <ConfigurationSettings>
-      <Setting name="Microsoft.ServiceBus.ConnectionString" />
-    </ConfigurationSettings>
   </WorkerRole>
+
+  
+  
 </ServiceDefinition>

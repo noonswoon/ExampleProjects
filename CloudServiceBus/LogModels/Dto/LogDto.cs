@@ -16,5 +16,10 @@ namespace LogModels.Dto
         public string LogLevel { get; set; }
         [DataMember(Name = "LogDetail")]
         public string LogDetail { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("LogTime [{0}], LogLevel [{1}], LogDetail [{2}]",LogTime,LogLevel,LogDetail);
+        }
     }
 }
