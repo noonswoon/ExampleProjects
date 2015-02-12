@@ -15,14 +15,14 @@
     <Property name="SetConfiguration" value="Configuration=Debug" />
     <Property name="SetPlatform" value="Platform=AnyCPU" />
     <Property name="RoleTargetFramework" value="v4.5" />
-    <Property name="OutputDir" value="C:\Users\Vatthanachai\Documents\Visual Studio 2012\Projects\BusServices\BusServices\obj\Debug\LogAPI\" />
+    <Property name="OutputDir" value="C:\Users\Vatthanachai\documents\visual studio 2012\Projects\BusServices\BusServices\obj\Debug\LogAPI\" />
     <Property name="EntryPoint" value="LogAPI.dll" />
-    <Property name="SourceDir" value="C:\Users\Vatthanachai\Documents\Visual Studio 2012\Projects\BusServices\LogAPI\" />
-    <Property name="SitePhysicalPath" value="C:\Users\Vatthanachai\Documents\Visual Studio 2012\Projects\BusServices\LogAPI\" />
+    <Property name="SourceDir" value="C:\Users\Vatthanachai\documents\visual studio 2012\Projects\BusServices\LogAPI\" />
+    <Property name="SitePhysicalPath" value="C:\Users\Vatthanachai\documents\visual studio 2012\Projects\BusServices\LogAPI\" />
     <Property name="TargetRuntimeVersion" value="v4.0" />
   </Properties>
   <Sites>
-    <Site name="Web" physicalDirectory="C:\Users\Vatthanachai\Documents\Visual Studio 2012\Projects\BusServices\LogAPI\">
+    <Site name="Web" physicalDirectory="C:\Users\Vatthanachai\documents\visual studio 2012\Projects\BusServices\LogAPI\">
       <Bindings>
         <Binding name="Endpoint1" endpointName="Endpoint1" />
       </Bindings>

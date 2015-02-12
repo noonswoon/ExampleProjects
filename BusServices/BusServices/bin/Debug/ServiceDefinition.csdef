@@ -22,7 +22,7 @@
     </Endpoints>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\Vatthanachai\Documents\Visual Studio 2012\Projects\BusServices\BusServices\rcf\Debug\LogAPIContent\" />
+        <SourceDirectory path="C:\Users\Vatthanachai\documents\visual studio 2012\Projects\BusServices\BusServices\rcf\Debug\LogAPIContent\" />
       </Content>
     </Contents>
   </WebRole>
@@ -32,7 +32,7 @@
     </ConfigurationSettings>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\Vatthanachai\Documents\Visual Studio 2012\Projects\BusServices\BusServices\rcf\Debug\LogQueueServiceContent\" />
+        <SourceDirectory path="C:\Users\Vatthanachai\documents\visual studio 2012\Projects\BusServices\BusServices\rcf\Debug\LogQueueServiceContent\" />
       </Content>
     </Contents>
   </WorkerRole>

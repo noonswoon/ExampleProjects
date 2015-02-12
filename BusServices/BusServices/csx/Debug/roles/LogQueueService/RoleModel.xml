@@ -13,7 +13,7 @@
     <Property name="Configuration" value="Debug" />
     <Property name="Platform" value="AnyCPU" />
     <Property name="RoleTargetFramework" value="v4.5" />
-    <Property name="OutputDir" value="C:\Users\Vatthanachai\Documents\Visual Studio 2012\Projects\BusServices\BusServices\obj\Debug\LogQueueService\" />
+    <Property name="OutputDir" value="C:\Users\Vatthanachai\documents\visual studio 2012\Projects\BusServices\BusServices\obj\Debug\LogQueueService\" />
     <Property name="EntryPoint" value="LogQueueService.dll" />
     <Property name="SourceDir" value="" />
     <Property name="SitePhysicalPath" value="" />

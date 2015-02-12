@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BusServices" generation="1" functional="0" release="0" Id="b87b5701-b902-4e35-afe2-bfaf889cb88b" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BusServices" generation="1" functional="0" release="0" Id="c2df1fbb-3060-4b5a-a3e2-2fe8c473b38a" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="BusServicesGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -52,7 +52,7 @@
       </maps>
       <components>
         <groupHascomponents>
-          <role name="LogAPI" generation="1" functional="0" release="0" software="C:\Users\Vatthanachai\Documents\Visual Studio 2012\Projects\BusServices\BusServices\csx\Debug\roles\LogAPI" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaIISHost.exe " memIndex="-1" hostingEnvironment="frontendadmin" hostingEnvironmentVersion="2">
+          <role name="LogAPI" generation="1" functional="0" release="0" software="C:\Users\Vatthanachai\documents\visual studio 2012\Projects\BusServices\BusServices\csx\Debug\roles\LogAPI" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaIISHost.exe " memIndex="-1" hostingEnvironment="frontendadmin" hostingEnvironmentVersion="2">
             <componentports>
               <inPort name="Endpoint1" protocol="http" portRanges="80" />
             </componentports>
@@ -71,7 +71,7 @@
           </sCSPolicy>
         </groupHascomponents>
         <groupHascomponents>
-          <role name="LogQueueService" generation="1" functional="0" release="0" software="C:\Users\Vatthanachai\Documents\Visual Studio 2012\Projects\BusServices\BusServices\csx\Debug\roles\LogQueueService" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaWorkerHost.exe " memIndex="-1" hostingEnvironment="consoleroleadmin" hostingEnvironmentVersion="2">
+          <role name="LogQueueService" generation="1" functional="0" release="0" software="C:\Users\Vatthanachai\documents\visual studio 2012\Projects\BusServices\BusServices\csx\Debug\roles\LogQueueService" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaWorkerHost.exe " memIndex="-1" hostingEnvironment="consoleroleadmin" hostingEnvironmentVersion="2">
             <settings>
               <aCS name="Microsoft.ServiceBus.ConnectionString" defaultValue="" />
               <aCS name="__ModelData" defaultValue="&lt;m role=&quot;LogQueueService&quot; xmlns=&quot;urn:azure:m:v1&quot;&gt;&lt;r name=&quot;LogAPI&quot;&gt;&lt;e name=&quot;Endpoint1&quot; /&gt;&lt;/r&gt;&lt;r name=&quot;LogQueueService&quot; /&gt;&lt;/m&gt;" />
@@ -99,9 +99,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="8e0ff19b-ad66-4216-b3b3-549016e6fde6" ref="Microsoft.RedDog.Contract\ServiceContract\BusServicesContract@ServiceDefinition">
+    <implementation Id="3041e4dd-f634-4e2c-89aa-d2a1df5ad626" ref="Microsoft.RedDog.Contract\ServiceContract\BusServicesContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="57f6087d-737f-42c4-a604-6b2fb45ff69b" ref="Microsoft.RedDog.Contract\Interface\LogAPI:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="51ec2803-8b0e-4446-ba16-3e1594dc33c7" ref="Microsoft.RedDog.Contract\Interface\LogAPI:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/BusServices/BusServicesGroup/LogAPI:Endpoint1" />
           </inPort>

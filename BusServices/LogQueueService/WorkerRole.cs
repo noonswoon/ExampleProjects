@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Threading;
-using LogQueueService.Model.Dto;
+using LogAPI.Models.Dto;
 using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
 using Microsoft.WindowsAzure;
@@ -33,6 +33,7 @@ namespace LogQueueService
                         {
                             var log = messages.GetBody<LogDataDto>();
 
+                           //Trace.WriteLine(log.ToString());
                             Trace.WriteLine("Message Id :- " + messages.MessageId + ", log time :- " + log.LogTime + ", log level :-" + log.LogLevel + ", log detail :- " + log.LogDetail);
                         }
                     }
