@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="NoonswoonPerformanceLoggingSystem" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="2" osVersion="*" schemaVersion="2014-06.2.4">
+  <Role name="Noonswoon.LoggingToDbWorkerRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="ServiceBus.ConnectionString" value="Endpoint=sb://nsmqdev2.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=ckS5/z0Cx9gucxoi/0/6WLYKc3DLh8kMz+jGTMhY/74=" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>
