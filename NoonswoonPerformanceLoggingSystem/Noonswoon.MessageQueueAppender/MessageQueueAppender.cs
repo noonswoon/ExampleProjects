@@ -23,6 +23,14 @@ namespace Noonswoon.Appender
                                                  Logger = e.LoggerName,
                                                  Message = e.MessageObject.ToString(),
                                              }).ToArray();
+                //var logs = new MessageQueueLoggingEvent
+                //{
+                //    Date = e.TimeStamp.Date,
+                //    Time = e.TimeStamp,
+                //    Level = e.Level.Name,
+                //    Logger = e.LoggerName,
+                //    Message = e.MessageObject.ToString()
+                //};
                 queueService.SendMessage(logs);
             }
             catch (Exception ex)

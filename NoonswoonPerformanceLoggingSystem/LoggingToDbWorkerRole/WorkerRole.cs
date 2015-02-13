@@ -25,12 +25,13 @@ namespace Noonswoon.LoggingToDbWorkerRole
 
         public override void Run()
         {
+            _log.Debug("Background Worker Role Run");
+
             Trace.TraceInformation("LoggingToDbWorkerRole is running");
 
             try
             {
                 this.RunAsync(this.cancellationTokenSource.Token).Wait();
-
             }
             finally
             {
@@ -88,12 +89,16 @@ namespace Noonswoon.LoggingToDbWorkerRole
 
                 if (_client != null)
                 {
-                    while (!cancellationToken.IsCancellationRequested)
+                    while (!cancellationToken.IsCancellationRequested)//false
                     {
                         var messages = _client.Receive();
                         if (messages != null)
                         {
-                            var log = messages.GetBody<MessageQueueLoggingEvent>();
+                            var log = messages.GetBody<MessageQueueLoggingEvent[]>();
+                            foreach (var l in log)
+                            {
+                                
+                            }
                             //Trace.WriteLine(log.ToString());
                             _log.Debug(log);
                         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Diagnostics;
 using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
@@ -8,11 +9,19 @@ namespace Noonswoon.Appender
 {
     public class QueueService
     {
-
-
         public const string QUEUE_NAME = "LoggingEvent";
 
-        private readonly string _connectionString = CloudConfigurationManager.GetSetting("ServiceBus.ConnectionString");
+        private readonly string _connectionString;
+
+        public QueueService()
+        {
+            _connectionString = CloudConfigurationManager.GetSetting("ServiceBus.ConnectionString");
+
+            if (!string.IsNullOrEmpty(_connectionString))
+            {
+                _connectionString = ConfigurationManager.AppSettings["ServiceBus.ConnectionString"];
+            }
+        }
 
         private bool GetQueueReference()
         {
@@ -56,7 +65,7 @@ namespace Noonswoon.Appender
             }
             catch (Exception exception)
             {
-                Trace.TraceError("Error Sending Message [{0}]",exception.Message);
+                Trace.TraceError("Error Sending Message [{0}]", exception.Message);
             }
         }
 
