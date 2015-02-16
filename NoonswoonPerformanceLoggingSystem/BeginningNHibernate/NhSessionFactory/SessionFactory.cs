@@ -7,6 +7,7 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Event;
+using NHibernate.SqlAzure;
 using log4net;
 
 namespace BeginningNHibernate.NhSessionFactory
@@ -34,6 +35,7 @@ namespace BeginningNHibernate.NhSessionFactory
             try
             {
                 var dbConfig = MsSqlConfiguration.MsSql2008.ConnectionString(connectionString)
+                    .Driver<SqlAzureClientDriver>()//For Azure Retry connection
                     //.ShowSql()
                     //.FormatSql()
                     .AdoNetBatchSize(100);
@@ -72,9 +74,13 @@ namespace BeginningNHibernate.NhSessionFactory
                                                     new AuditEventListener()
                                                  };
 
+            //https://github.com/MRCollective/NHibernate.SqlAzure
             //for unique constrain exception
-            cfg.SetProperty("sql_exception_converter",
-                typeof(SqlServerExceptionConverter).AssemblyQualifiedName);
+            cfg.SetProperty(NHibernate.Cfg.Environment.SqlExceptionConverter,
+                typeof(SqlServerExceptionConverter).AssemblyQualifiedName); 
+            //for transaction
+            cfg.SetProperty(NHibernate.Cfg.Environment.TransactionStrategy, 
+                typeof(ReliableAdoNetWithDistributedTransactionFactory).AssemblyQualifiedName);
         }
 
         public static ISessionFactory GetNHSessionFactory()
