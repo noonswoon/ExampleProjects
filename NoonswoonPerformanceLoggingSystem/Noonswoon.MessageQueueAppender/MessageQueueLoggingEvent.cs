@@ -6,22 +6,24 @@ namespace Noonswoon.Appender
     [DataContract]
     public class MessageQueueLoggingEvent
     {
-        [DataMember]
-        public DateTime Time { get; set; }
+        public virtual Guid Id { get; set; }
 
         [DataMember]
-        public DateTime Date { get; set; }
+        public virtual DateTime Time { get; set; }
 
         [DataMember]
-        public string Level { get; set; }
+        public virtual DateTime Date { get; set; }
 
         [DataMember]
-        public string Message { get; set; }
+        public virtual string Level { get; set; }
 
         [DataMember]
-        public string Logger { get; set; }
+        public virtual string Message { get; set; }
 
-        public override string ToString()
+        [DataMember]
+        public virtual string Logger { get; set; }
+
+        public  override string ToString()
         {
             return string.Format(
                 "LogTime [{0}], LogLevel [{1}], LogDetail [{2}]",
