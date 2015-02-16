@@ -16,7 +16,7 @@ namespace BeginningNHibernate.NhSessionFactory
 
         private static ISessionFactory _sessionFactory;
         private static NHibernate.Cfg.Configuration _config;
-        private static ILog _log = LogManager.GetLogger(typeof(SessionFactory));
+        private static readonly ILog _log = LogManager.GetLogger(typeof(SessionFactory));
 
         public static NHibernate.Cfg.Configuration Config
         {
@@ -25,16 +25,27 @@ namespace BeginningNHibernate.NhSessionFactory
 
         public static void Init()
         {
+            var connectionString = ConfigurationManager.AppSettings["ConnectionString"];
+            Init(connectionString);
+        }
+
+        public static void Init(string connectionString)
+        {
             try
             {
+                var dbConfig = MsSqlConfiguration.MsSql2008.ConnectionString(connectionString)
+                    //.ShowSql()
+                    //.FormatSql()
+                    .AdoNetBatchSize(100);
+
                 _config = Fluently.Configure()
-                    .Database(GetDatabaseConfig())
+                    .Database(dbConfig)
                     .Mappings(m =>
-                    {
-                        m.FluentMappings.AddFromAssemblyOf<MessageQueueLoggingEventMap>();
-                        //to use name query in xml file
-                        m.HbmMappings.AddFromAssemblyOf<MessageQueueLoggingEventMap>();
-                    })
+                                  {
+                                      m.FluentMappings.AddFromAssemblyOf<MessageQueueLoggingEventMap>();
+                                      //to use name query in xml file
+                                      m.HbmMappings.AddFromAssemblyOf<MessageQueueLoggingEventMap>();
+                                  })
                     .ExposeConfiguration(TreatConfiguration)
                     .BuildConfiguration();
 
@@ -44,50 +55,6 @@ namespace BeginningNHibernate.NhSessionFactory
             {
                 LogExceptionRecursively(ex);
             }
-        }
-
-        private static void LogExceptionRecursively(Exception ex)
-        {
-            if (ex == null)
-            {
-                _log.Fatal("SessionFactory init exception is null and return exit method");
-            }
-            else
-            {
-                if (ex is ReflectionTypeLoadException)
-                {
-                    var typeLoadException = ex as ReflectionTypeLoadException;
-                    var loaderExceptions = typeLoadException.LoaderExceptions;
-                    foreach (var loaderException in loaderExceptions)
-                    {
-                        _log.Fatal(loaderException);
-                    }
-                }
-                else
-                {
-                    _log.Fatal(ex);
-                }
-
-
-
-                LogExceptionRecursively(ex.InnerException);
-            }
-        }
-
-        public static void Init(string connectionString)
-        {
-            _config = Fluently.Configure()
-                    .Database(GetDatabaseConfig(connectionString))
-                    .Mappings(m =>
-                    {
-                        m.FluentMappings.AddFromAssemblyOf<MessageQueueLoggingEventMap>();
-                        //to use name query in xml file
-                        m.HbmMappings.AddFromAssemblyOf<MessageQueueLoggingEventMap>();
-                    })
-                    .ExposeConfiguration(TreatConfiguration)
-                    .BuildConfiguration();
-
-            _sessionFactory = _config.BuildSessionFactory();
         }
 
         private static void TreatConfiguration(NHibernate.Cfg.Configuration cfg)
@@ -110,22 +77,6 @@ namespace BeginningNHibernate.NhSessionFactory
                 typeof(SqlServerExceptionConverter).AssemblyQualifiedName);
         }
 
-        private static IPersistenceConfigurer GetDatabaseConfig()
-        {
-            var connectionString = ConfigurationManager.AppSettings["ConnectionString"];
-            return MsSqlConfiguration.MsSql2008.ConnectionString(connectionString)
-                //.ShowSql()
-                //.FormatSql()
-                .AdoNetBatchSize(100);
-        }
-
-        private static IPersistenceConfigurer GetDatabaseConfig(string connectionString)
-        {
-            return MsSqlConfiguration.MsSql2008.ConnectionString(connectionString)
-                //.ShowSql()
-                //.FormatSql()
-                .AdoNetBatchSize(100);
-        }
         public static ISessionFactory GetNHSessionFactory()
         {
             if (_sessionFactory == null)
@@ -157,6 +108,31 @@ namespace BeginningNHibernate.NhSessionFactory
                 SessionStorageFactory.GetStorageContainer();
             sessionStorageContainer.Clear();
 
+        }
+
+        private static void LogExceptionRecursively(Exception ex)
+        {
+            if (ex == null)
+            {
+                _log.Fatal("SessionFactory init exception is null and return exit method");
+            }
+            else
+            {
+                if (ex is ReflectionTypeLoadException)
+                {
+                    var typeLoadException = ex as ReflectionTypeLoadException;
+                    var loaderExceptions = typeLoadException.LoaderExceptions;
+                    foreach (var loaderException in loaderExceptions)
+                    {
+                        _log.Fatal(loaderException);
+                    }
+                }
+                else
+                {
+                    _log.Fatal(ex);
+                }
+                LogExceptionRecursively(ex.InnerException);
+            }
         }
 
 

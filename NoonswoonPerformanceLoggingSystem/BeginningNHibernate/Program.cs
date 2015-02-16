@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using BeginningNHibernate.NhSessionFactory;
 using BeginningNHibernate.SessionStorage;
+using NHibernate.Linq;
 using Noonswoon.Appender;
 
 namespace BeginningNHibernate
 {
     class Program
     {
-      public  static void Main()
+        public static void Main()
         {
             SessionFactory.Init();
 
@@ -29,10 +30,19 @@ namespace BeginningNHibernate
                     Level = "DEBUG"
                 };
                 session.Save(log);
-
-
                 unitOfWork.Commit();
             }
+
+
+            using (unitOfWorkFactory.Create())
+            {
+
+                var session = SessionFactory.GetCurrentSession();
+                var logCount = session.Query<MessageQueueLoggingEvent>().Count();
+
+                Console.WriteLine("logCount [{0}]", logCount);
+            }
+
 
         }
     }
