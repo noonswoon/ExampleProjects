@@ -28,7 +28,7 @@ namespace Noonswoon.LoggingToDbWorkerRole.NhSessionFactory
 
         public static void Init()
         {
-            var connectionString = CloudConfigurationManager.GetSetting("ServiceBus.ConnectionString");
+            var connectionString = CloudConfigurationManager.GetSetting("Azure.connectionString");
             Init(connectionString);
         }
 

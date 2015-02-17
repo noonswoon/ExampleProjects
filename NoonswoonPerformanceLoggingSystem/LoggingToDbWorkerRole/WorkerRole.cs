@@ -105,7 +105,7 @@ namespace Noonswoon.LoggingToDbWorkerRole
                                 using (var unitOfWork = unitOfWorkFactory.Create())
                                 {
                                     var session = SessionFactory.GetCurrentSession();
-                                    var now = DateTime.UtcNow;
+                                    //var now = DateTime.UtcNow;
                                     var tmp = new MessageQueueLoggingEvent
                                     {
                                         Date = l.Date,
@@ -115,7 +115,7 @@ namespace Noonswoon.LoggingToDbWorkerRole
                                         Time = l.Time
                                     };
 
-                                    session.Save(log);
+                                    session.Save(tmp);
                                     unitOfWork.Commit();
                                 }
 
