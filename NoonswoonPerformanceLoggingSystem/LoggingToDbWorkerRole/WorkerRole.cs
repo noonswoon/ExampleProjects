@@ -8,6 +8,8 @@ using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.ServiceRuntime;
 using Noonswoon.Appender;
 using log4net;
+using Noonswoon.LoggingToDbWorkerRole.NhSessionFactory;
+using Noonswoon.LoggingToDbWorkerRole.SessionStorage;
 
 namespace Noonswoon.LoggingToDbWorkerRole
 {
@@ -82,6 +84,8 @@ namespace Noonswoon.LoggingToDbWorkerRole
         {
             try
             {
+                SessionFactory.Init();
+
                 _client = QueueClient.CreateFromConnectionString(
                     _connectionString,
                     QueueService.QUEUE_NAME,
@@ -94,13 +98,30 @@ namespace Noonswoon.LoggingToDbWorkerRole
                         var messages = _client.Receive();
                         if (messages != null)
                         {
+                            IUnitOfWorkFactory unitOfWorkFactory = new NHUnitOfWorkFactory(); 
                             var log = messages.GetBody<MessageQueueLoggingEvent[]>();
                             foreach (var l in log)
                             {
-                                
+                                using (var unitOfWork = unitOfWorkFactory.Create())
+                                {
+                                    var session = SessionFactory.GetCurrentSession();
+                                    var now = DateTime.UtcNow;
+                                    var tmp = new MessageQueueLoggingEvent
+                                    {
+                                        Date = l.Date,
+                                        Level = l.Level,
+                                        Logger = l.Logger,
+                                        Message = l.Message,
+                                        Time = l.Time
+                                    };
+
+                                    session.Save(log);
+                                    unitOfWork.Commit();
+                                }
+
                             }
                             //Trace.WriteLine(log.ToString());
-                            _log.Debug(log);
+                           // _log.Debug(log);
                         }
                         else
                         { 

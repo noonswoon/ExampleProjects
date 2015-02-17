@@ -3,6 +3,7 @@
   <WorkerRole name="Noonswoon.LoggingToDbWorkerRole" vmsize="Small">
     <ConfigurationSettings>
       <Setting name="ServiceBus.ConnectionString"/>
+      <Setting name="Azure.connectionString" />
     </ConfigurationSettings>
   </WorkerRole>
 </ServiceDefinition>
