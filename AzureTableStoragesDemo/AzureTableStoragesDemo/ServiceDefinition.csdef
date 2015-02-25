@@ -14,6 +14,9 @@
     <Imports>
       <Import moduleName="Diagnostics" />
     </Imports>
+    <ConfigurationSettings>
+      <Setting name="AzureTable.ConnectionString" />
+    </ConfigurationSettings>
   </WebRole>
   <WorkerRole name="WorkerRoleDemo" vmsize="Small">
     <Imports>
