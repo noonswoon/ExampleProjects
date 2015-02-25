@@ -6,11 +6,14 @@ using System.Web;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
+using log4net;
 
 namespace WebDemo.Models
 {
     public class UserRepository
     {
+        private ILog _log = LogManager.GetLogger(typeof(UserRepository));
+
         private CloudStorageAccount _storage;
         private CloudTableClient _client;
         private CloudTable _table;
@@ -18,27 +21,47 @@ namespace WebDemo.Models
         //Call First Method For Check AllReady Storage
         public bool CheckStorageDataExists()
         {
-            _storage = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString"));
-
-            _client = _storage.CreateCloudTableClient();
-
-            _table = _client.GetTableReference("Users");
-
-            if (!_table.CreateIfNotExists())
+            try
             {
+                var connectionString = CloudConfigurationManager.GetSetting("AzureTable.ConnectionString");
+                _log.DebugFormat("connectionString [{0}]", connectionString);
+
+                _storage = CloudStorageAccount.Parse(connectionString);
+
+                _client = _storage.CreateCloudTableClient();
+                _table = _client.GetTableReference("Users");
+
+                if (_table.Exists())
+                {
+                    return true;
+                }
+
+                _table.Create();
+               
                 return true;
             }
+            catch (Exception ex)
+            {
+                _log.Error("CheckStorage Exists Error", ex);
+                return false;
+            }
 
-            return false;
         }
 
         public void SaveUser(UsersEntity user)
         {
-            if (CheckStorageDataExists())
+            try
             {
-                var operation = TableOperation.Insert(user);
+                if (CheckStorageDataExists())
+                {
+                    var operation = TableOperation.Insert(user);
 
-                _table.Execute(operation);
+                    _table.Execute(operation);
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex);
             }
         }
 
@@ -53,12 +76,8 @@ namespace WebDemo.Models
                             TableOperators.And,
                             TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, firstname)));
 
-                var users = _table.ExecuteQuery(query).Select(entity => new UsersEntity(entity.PartitionKey, entity.RowKey)
-                {
-                    Email = entity.Email, Phone = entity.Phone
-                }).ToList();
-
-                return users.ToList();
+                var users = _table.ExecuteQuery(query).ToList();
+                return users;
             }
             else
             {

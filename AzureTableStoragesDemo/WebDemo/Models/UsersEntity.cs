@@ -8,18 +8,23 @@ using Microsoft.WindowsAzure.Storage.Table;
 
 namespace WebDemo.Models
 {
-    [DataContract]
     public class UsersEntity : TableEntity
     {
-        public UsersEntity(string firstname, string lastname)
+
+        public UsersEntity(string firstName, string lastName)
         {
-            this.PartitionKey = lastname;
-            this.RowKey = firstname;
+            this.RowKey = firstName;
+            this.PartitionKey = lastName;
         }
+
 
         public UsersEntity()
         {
         }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
 
         public string Email { get; set; }
         public string Phone { get; set; }

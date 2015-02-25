@@ -22,22 +22,28 @@ namespace WebDemo.Controllers
         {
             var repository = new UserRepository();
 
-            //var user = new UsersEntity("Vatthanachai", "Wongprasert")
-            //{
-            //    Email = "Vatthanachai.w@gmail.com",
-            //    Phone = "087-659-5578"
-            //};
+            //row , partition
+            var rowKey = "Vatthanachai" + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+            var partitionKey = "Wongprasert";
+            var user = new UsersEntity(rowKey,partitionKey)
+            {
+                RowKey = rowKey,
+                PartitionKey = partitionKey,
+                Email = "Vatthanachai.w@gmail.com",
+                Phone = "087-659-5578"
+            };
 
-            //repository.SaveUser(user);
+            repository.SaveUser(user);
 
-            var tmp = repository.GetUsers("Vatthanachai", "Wongprasert");
+            var tmp = repository.GetUsers(rowKey, partitionKey);
 
 
             if (tmp.Any())
             {
                 foreach (var t in tmp)
                 {
-                    return Content(string.Format("Firstname :- {0}, Lastname :- {1}, Email :- {2}, Phone :- {3}", t.PartitionKey, t.RowKey, t.Email, t.Phone));
+                    return Content(string.Format("Firstname :- {0}, Lastname :- {1}, Email :- {2}, Phone :- {3}",
+                        t.PartitionKey, t.RowKey, t.Email, t.Phone));
                 }
             }
 
