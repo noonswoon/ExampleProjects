@@ -20,7 +20,7 @@ namespace Noonswoon.Test.Web.Controllers
            
             for (int i = 0; i < 10; i++)
             {
-                _log.Debug("Error - Test");    
+                _log.Debug("Debug from Web - Test");    
             }
             
           

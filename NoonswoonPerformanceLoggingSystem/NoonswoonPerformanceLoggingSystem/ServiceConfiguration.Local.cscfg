@@ -4,6 +4,7 @@
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="ServiceBus.ConnectionString" value="Endpoint=sb://nsmqdev2.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=ckS5/z0Cx9gucxoi/0/6WLYKc3DLh8kMz+jGTMhY/74=" />
+      <Setting name="Azure.connectionString" value="Server=tcp:bcd9ryuhaj.database.windows.net,1433;Database=nslogazuredb;User ID=nslogazuredbsa@bcd9ryuhaj;Password=9UWxHHbjh2IpMZMRgGB21JfZpdfoRVX6zx9biT2IKJWUXudqw3gUkBi4tqrlD6yF;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
