@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--setting for log4net-->
+<log4net>
+  <!--for Yet Another Log4Net Viewer -->
+  <appender name="FileAppenderXmlLayout" type="log4net.Appender.FileAppender">
+    <threshold value="ALL"/>
+    <!--not lock file-->
+    <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+    <file type="log4net.Util.PatternString" value="Logs/log.xml"/>
+    <appendToFile value="false"/>
+    <layout type="log4net.Layout.XmlLayoutSchemaLog4j">
+      <locationInfo value="true"/>
+    </layout>
+    <param name="Encoding" value="utf-8" />
+  </appender>
+
+  <!-- global setting for all log-->
+  <root>
+    <level value="ALL" />
+    <!--for Yet Another Log4Net Viewer-->
+    <appender-ref ref="FileAppenderXmlLayout" />
+  </root>
+
+
+</log4net>

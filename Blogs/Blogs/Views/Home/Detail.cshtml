@@ -1,0 +1,25 @@
+﻿@model Blog.Core.Post
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+@if (@Model != null)
+{
+    <div class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>@Model.PostTitle</h2>
+                </div>
+                <div class="modal-body">
+                    <p>@Model.PostDetail</p>
+                </div>
+                <div class="modal-footer">
+                    <p>@Model.PostDateTime</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}

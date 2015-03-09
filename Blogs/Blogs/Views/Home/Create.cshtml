@@ -1,0 +1,30 @@
+﻿@model Blog.Core.Post
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-lg-2">
+                @Html.LabelFor(Model => Model.PostTitle)
+            </div>
+            <div class="col-lg-10">
+                @Html.TextBoxFor(Model => Model.PostTitle)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-2">
+                @Html.LabelFor(Model => Model.PostDetail)
+            </div>
+            <div class="col-lg-10">
+                @Html.TextBoxFor(Model => Model.PostDetail)
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+    </div>
+}

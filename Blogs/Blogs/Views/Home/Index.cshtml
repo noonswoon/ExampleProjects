@@ -1,0 +1,57 @@
+﻿@model List<Blog.Core.Post>
+@{
+    ViewBag.Title = ".:: Blog List ::.";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<div class="container">
+    <div class="h2">.:: Blog List ::.</div>
+    <div class="btn">@Html.ActionLink("New", "Create")</div>
+</div>
+
+@*<table id="tbBlogList" class="table table-striped table-hover table-responsive">
+    <thead>
+        <tr>
+            <td>Title</td>
+            <td>Created</td>
+        </tr>
+    </thead>
+    @if (@Model != null)
+    {
+        if (@Model.Any())
+        {
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.PostTitle</td>
+                    <td>@item.PostDateTime</td>
+                </tr>
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">รวม @Model.Count รายการ</td>
+            </tr>
+        </tfoot>
+        }
+    }
+</table>*@
+
+@if (@Model != null)
+{
+    if (@Model.Any())
+    {
+
+        foreach (var item in Model)
+        {
+    <div class="jumbotron">
+        <h3>@item.PostTitle</h3>
+        <p>@item.PostDetail</p>
+        <p>@item.PostDateTime</p>
+        <p>@Html.ActionLink("Detail", "Detail", new { title = @item.PostTitle })</p>
+    </div>
+        }
+    }
+}

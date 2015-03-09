@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using BeginningNHibernate.NhSessionFactory;
 using BeginningNHibernate.SessionStorage;
 using NHibernate.Linq;
@@ -33,7 +31,6 @@ namespace BeginningNHibernate
                 unitOfWork.Commit();
             }
 
-
             using (unitOfWorkFactory.Create())
             {
 
@@ -42,8 +39,6 @@ namespace BeginningNHibernate
 
                 Console.WriteLine("logCount [{0}]", logCount);
             }
-
-
         }
     }
 }

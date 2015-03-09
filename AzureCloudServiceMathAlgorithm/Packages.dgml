@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="MathAlgorithm.BL" Label="MathAlgorithm.BL" Category="Project" />
+    <Node Id="Microsoft.Data.Edm 5.6.3" Label="Microsoft.Data.Edm 5.6.3" Category="Package" />
+    <Node Id="Microsoft.Data.OData 5.6.3" Label="Microsoft.Data.OData 5.6.3" Category="Package" />
+    <Node Id="Microsoft.Data.Services.Client 5.6.3" Label="Microsoft.Data.Services.Client 5.6.3" Category="Package" />
+    <Node Id="Microsoft.WindowsAzure.ConfigurationManager 2.0.3" Label="Microsoft.WindowsAzure.ConfigurationManager 2.0.3" Category="Package" />
+    <Node Id="Newtonsoft.Json 6.0.8" Label="Newtonsoft.Json 6.0.8" Category="Package" />
+    <Node Id="System.Spatial 5.6.3" Label="System.Spatial 5.6.3" Category="Package" />
+    <Node Id="WindowsAzure.Storage 4.3.0" Label="WindowsAzure.Storage 4.3.0" Category="Package" />
+    <Node Id="WindowsAzure.StorageExtensions 1.0.0" Label="WindowsAzure.StorageExtensions 1.0.0" Category="Package" />
+    <Node Id="MathAlgorithm.Core" Label="MathAlgorithm.Core" Category="Project" />
+    <Node Id="Microsoft.Data.Edm 5.6.3" Label="Microsoft.Data.Edm 5.6.3" Category="Package" />
+    <Node Id="Microsoft.Data.OData 5.6.3" Label="Microsoft.Data.OData 5.6.3" Category="Package" />
+    <Node Id="Microsoft.Data.Services.Client 5.6.3" Label="Microsoft.Data.Services.Client 5.6.3" Category="Package" />
+    <Node Id="Microsoft.WindowsAzure.ConfigurationManager 2.0.3" Label="Microsoft.WindowsAzure.ConfigurationManager 2.0.3" Category="Package" />
+    <Node Id="Newtonsoft.Json 6.0.8" Label="Newtonsoft.Json 6.0.8" Category="Package" />
+    <Node Id="System.Spatial 5.6.3" Label="System.Spatial 5.6.3" Category="Package" />
+    <Node Id="WindowsAzure.Storage 4.3.0" Label="WindowsAzure.Storage 4.3.0" Category="Package" />
+    <Node Id="WindowsAzure.StorageExtensions 1.0.0" Label="WindowsAzure.StorageExtensions 1.0.0" Category="Package" />
+    <Node Id="MathAlgorithmWorker" Label="MathAlgorithmWorker" Category="Project" />
+    <Node Id="log4net 2.0.3" Label="log4net 2.0.3" Category="Package" />
+    <Node Id="Microsoft.Data.Edm 5.6.3" Label="Microsoft.Data.Edm 5.6.3" Category="Package" />
+    <Node Id="Microsoft.Data.OData 5.6.3" Label="Microsoft.Data.OData 5.6.3" Category="Package" />
+    <Node Id="Microsoft.Data.Services.Client 5.6.3" Label="Microsoft.Data.Services.Client 5.6.3" Category="Package" />
+    <Node Id="Microsoft.WindowsAzure.ConfigurationManager 2.0.3" Label="Microsoft.WindowsAzure.ConfigurationManager 2.0.3" Category="Package" />
+    <Node Id="Newtonsoft.Json 6.0.8" Label="Newtonsoft.Json 6.0.8" Category="Package" />
+    <Node Id="System.Spatial 5.6.3" Label="System.Spatial 5.6.3" Category="Package" />
+    <Node Id="WindowsAzure.Storage 4.3.0" Label="WindowsAzure.Storage 4.3.0" Category="Package" />
+  </Nodes>
+  <Links>
+    <Link Source="Microsoft.Data.OData 5.6.3" Target="System.Spatial 5.6.3" Category="Package Dependency" />
+    <Link Source="Microsoft.Data.OData 5.6.3" Target="Microsoft.Data.Edm 5.6.3" Category="Package Dependency" />
+    <Link Source="Microsoft.Data.Services.Client 5.6.3" Target="Microsoft.Data.OData 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.Data.OData 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Newtonsoft.Json 6.0.8" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.Data.Services.Client 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.WindowsAzure.ConfigurationManager 2.0.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.Data.OData 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.Data.OData 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.Data.OData 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Newtonsoft.Json 6.0.8" Category="Package Dependency" />
+    <Link Source="WindowsAzure.StorageExtensions 1.0.0" Target="WindowsAzure.Storage 4.3.0" Category="Package Dependency" />
+    <Link Source="MathAlgorithm.BL" Target="WindowsAzure.StorageExtensions 1.0.0" Category="Installed Package" />
+    <Link Source="Microsoft.Data.OData 5.6.3" Target="System.Spatial 5.6.3" Category="Package Dependency" />
+    <Link Source="Microsoft.Data.OData 5.6.3" Target="Microsoft.Data.Edm 5.6.3" Category="Package Dependency" />
+    <Link Source="Microsoft.Data.Services.Client 5.6.3" Target="Microsoft.Data.OData 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.Data.OData 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Newtonsoft.Json 6.0.8" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.Data.Services.Client 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.WindowsAzure.ConfigurationManager 2.0.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.Data.OData 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.Data.OData 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.Data.OData 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Newtonsoft.Json 6.0.8" Category="Package Dependency" />
+    <Link Source="WindowsAzure.StorageExtensions 1.0.0" Target="WindowsAzure.Storage 4.3.0" Category="Package Dependency" />
+    <Link Source="MathAlgorithm.Core" Target="WindowsAzure.StorageExtensions 1.0.0" Category="Installed Package" />
+    <Link Source="Microsoft.Data.OData 5.6.3" Target="System.Spatial 5.6.3" Category="Package Dependency" />
+    <Link Source="Microsoft.Data.OData 5.6.3" Target="Microsoft.Data.Edm 5.6.3" Category="Package Dependency" />
+    <Link Source="Microsoft.Data.Services.Client 5.6.3" Target="Microsoft.Data.OData 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.Data.OData 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Newtonsoft.Json 6.0.8" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.Data.Services.Client 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.WindowsAzure.ConfigurationManager 2.0.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.Data.OData 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.Data.OData 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Microsoft.Data.OData 5.6.3" Category="Package Dependency" />
+    <Link Source="WindowsAzure.Storage 4.3.0" Target="Newtonsoft.Json 6.0.8" Category="Package Dependency" />
+    <Link Source="MathAlgorithmWorker" Target="log4net 2.0.3" Category="Installed Package" />
+    <Link Source="MathAlgorithmWorker" Target="WindowsAzure.Storage 4.3.0" Category="Installed Package" />
+  </Links>
+  <Categories>
+    <Category Id="Project" />
+    <Category Id="Package" />
+  </Categories>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Project" ValueLabel="True">
+      <Condition Expression="HasCategory('Project')" />
+      <Setter Property="Background" Value="Blue" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Package Dependency" ValueLabel="True">
+      <Condition Expression="HasCategory('Package Dependency')" />
+      <Setter Property="Background" Value="Yellow" />
+    </Style>
+  </Styles>
+</DirectedGraph>
